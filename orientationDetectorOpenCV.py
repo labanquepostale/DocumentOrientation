@@ -4,7 +4,7 @@ import argparse
 import cv2
 import time
 
-# fonction de rotation de l'image qui ne coupe pas les bords
+# Image rotation without cropping
 def rotate_bound(image, angle, borderValue):
     (h, w) = image.shape[:2]
     (cX, cY) = (w // 2, h // 2)
@@ -22,7 +22,7 @@ def rotate_bound(image, angle, borderValue):
     return cv2.warpAffine(image, M, (nW, nH), borderValue=borderValue)
 
 
-start = time.clock() # début de mesure du temps d'execution du programme
+start = time.clock() # Start timer for measuring execution delay
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True,
@@ -38,35 +38,31 @@ list_images = listdir(input_path)
 
 for image_name in list_images:
     img = cv2.imread(input_path + "/" + image_name)
-    #print(image_name)
 
     (height, width) = img.shape[:2]
 
-    # formattage de l'image
+    # Image formatting 
     image = img
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.bitwise_not(gray)
     thresh = cv2.threshold(gray, 0, 255,
                            cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
-    # accentue l'epaisseur du texte pour que les rectangles à détecter correspondent principalement à un mot
-    # la taille du kernel pour la dilatation dépend du type de document.
-    k_size = 5 # document dactylographié
-    #k_size = 20 # document manuscrit
+    
+    # Increase text thickness for a better word detection
+    # Kernel size for dilatation (depending of document size)
+    k_size = 5 # Non hand-written document
+    #k_size = 20 # Hand-written document
 
     kernel = np.ones((k_size, k_size), np.uint8)
     dila = cv2.dilate(thresh, kernel)
 
-    # fonction de détection de contours d'OpenCV
+    # Contours Detection
     contours, hierarchy = cv2.findContours(dila, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-    # dans la langue française, il y a plus de lettres (et elles sont plus fréquentes) qui se prolongent vers le haut que vers le bas.
-    # vers le haut : b d f h i k l t é è à ù
-    # vers le bas : g j p q z(manuscrit)
-    # en partant de ce constat, on cherche des rectangles contenant plusieurs lettres
-    # on découpe chaque rectangle en deux dans le sens de la longueur
-    # et on compare la valeur moyenne des pixels des deux côtés du rectangle.
-    # cela permet d'incrémenter les valeurs count0 count90 count180 count270
-    # La variable la plus élevée donne l'angle de l'image.
+
+    # Detects the orientation of the text by measuring in the rectangle contouring the word how much ink is in the upper part
+    # and how much is in the lower part. If the word is in the right orientation, more ink will be displayed in the upper part
+    # as more letter in french have an upper part (eg. b d f h i k l t é è à ù )
     count0 = 0
     count90 = 0
     count180 = 0
@@ -106,11 +102,11 @@ for image_name in list_images:
 
     rotated = rotate_bound(img, angle, borderValue=(255, 255, 255))
 
-    # sauvegarde de l'image
+    # Save image
     print("[INFO] angle: {:.3f}".format(angle))
     cv2.imwrite(output_path + "/rotated_" + image_name, rotated)
 
-# fin de mesure du temps d'execution du programme
+# Stop measuring time
 elapsed = time.clock()
 elapsed = elapsed - start
 print("Time spent : ", elapsed)
