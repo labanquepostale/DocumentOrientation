@@ -34,7 +34,8 @@ As a contributor, here are the guidelines we would like you to follow :
 
  - [Code of Conduct](#coc)
  - [Any Question](#aqu)
- - [Versionning Concerne](#vco)
+ - [Reporting Bugs](#rb)
+ - [Suggesting Enhancements](#sa)
  - [style guide](#stg)
 
 ## <a name="coc"></a> Code of Conduct
@@ -43,21 +44,21 @@ Like many other projects, we have adopted [Contributor Covenant] https://www.con
 
 Instances inacceptable behavior may be reported to the community leaders responsible for enforcement at [INSERT CONTACT METHOD]. 
 
-## <a name="coc"></a>Any question
+## <a name="aqu"></a>Any question
 If you have any question, issues or enhancement to propose you can contact us through following channels
 - Issues and enhancement : [lien vers le suivis des ano ou des propositions d'améliorations]
 - simple question : [lien vers un outil de discussion]
 
-#### Reporting bugs
+#### <a name="rb">Reporting bugs
 
 Before reporting a bug, please make sure it hasn't already been reported by visiting the
-[issue section](todo).
+[issue section](https://github.com/labanquepostale/DocumentOrientation/issues).
 
 If the bug you found hasn't been reported yet, create a new issue and assign it the proper label(s).
 Besides this, there isn't any specific guideline on how the bugs should be reported, Just be sure
 to be as clear as possible when describing it.
 
-#### Suggesting enhancements
+#### <a name="sa"></a>Suggesting enhancements
 
 Same as the bug reporting. First of all, check if the enhancement has already been suggested.
 If it doesn't exist, create a new issue and give it the `enhancement` label, plus any other proper label.
@@ -69,4 +70,4 @@ enhancement just for yourself.
 
 
 # License
-Describe here the licence description (link to the licence file) 
+You can consult [the license in this section](https://github.com/labanquepostale/DocumentOrientation/blob/master/LICENSE)
