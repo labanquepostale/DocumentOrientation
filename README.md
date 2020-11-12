@@ -36,18 +36,16 @@ As a contributor, here are the guidelines we would like you to follow :
  - [Any Question](#aqu)
  - [Reporting Bugs](#rb)
  - [Suggesting Enhancements](#sa)
- - [style guide](#stg)
+ - [Style Guide](#stg)
 
 ## <a name="coc"></a> Code of Conduct
 
 Like many other projects, we have adopted [Contributor Covenant] https://www.contributor-covenant.org/ as our code of conduct and we hope that participants will adhere to it. 
 
-Instances inacceptable behavior may be reported to the community leaders responsible for enforcement at [INSERT CONTACT METHOD]. 
+Instances inacceptable behavior may be reported to the community leaders responsible for enforcement at guillaume.laulom@labanquepostale.fr 
 
 ## <a name="aqu"></a>Any question
-If you have any question, issues or enhancement to propose you can contact us through following channels
-- Issues and enhancement : [lien vers le suivis des ano ou des propositions d'améliorations]
-- simple question : [lien vers un outil de discussion]
+If you have any question or issues you can post it in the [Issue Section](https://github.com/labanquepostale/DocumentOrientation/issues) with a proper label.
 
 #### <a name="rb">Reporting bugs
 
@@ -68,6 +66,8 @@ so please, make sure that the enhancement can actually be useful for everyone be
 If you find that it is actually useful only for you, consider forking the project and implementing that
 enhancement just for yourself.
 
+#### <a name="stg"></a>Style Guide
+Just use classic Python style and add comment to make it understandable if needed
 
 # License
 You can consult [the license in this section](https://github.com/labanquepostale/DocumentOrientation/blob/master/LICENSE)
